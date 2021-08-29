@@ -463,9 +463,11 @@ MonoBehaviour:
   friction: {x: 0.1, y: 0}
   speed: 7
   forceJump: 20
+  speedRun: 15
   moveLeft: 276
   moveRight: 275
-  jump: 32
+  jump: 273
+  run: 304
 --- !u!1 &1326633404
 GameObject:
   m_ObjectHideFlags: 0
