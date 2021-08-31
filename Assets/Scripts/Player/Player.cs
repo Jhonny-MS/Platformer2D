@@ -25,6 +25,12 @@ public class Player : MonoBehaviour
     public float fallScaleY = -0.7f;
     public float fallScaleX = -0.5f;
 
+    [Header("Animation Player")]
+    public string boolRun = "isRun";
+    public string boolJump = "isJump";
+    public Animator animator;
+    public float playerSwipeDuration = 0.5f;
+
     [Header("Controls")]
     public KeyCode moveLeft;
     public KeyCode moveRight;
@@ -42,24 +48,41 @@ public class Player : MonoBehaviour
         if (Input.GetKey(run))
         {
             _currentSpeed = speedRun;
+            animator.speed = 2;
         }
         else
         {
             _currentSpeed = speed;
+            animator.speed = 1;
         }
 
         if (Input.GetKey(moveLeft))
         {
             //myRigidbody2D.MovePosition(myRigidbody2D.position - velocity * Time.deltaTime);
             myRigidbody2D.velocity = new Vector2(-_currentSpeed, myRigidbody2D.velocity.y);
+            if(myRigidbody2D.transform.localScale.x != -1)
+            {
+                myRigidbody2D.transform.DOScaleX(-1, playerSwipeDuration);
+            }
+            animator.SetBool(boolRun, true);
         }
         else if (Input.GetKey(moveRight))
         {
             //myRigidbody2D.MovePosition(myRigidbody2D.position + velocity * Time.deltaTime);
             myRigidbody2D.velocity = new Vector2(_currentSpeed, myRigidbody2D.velocity.y);
+            if (myRigidbody2D.transform.localScale.x != 1)
+            {
+                myRigidbody2D.transform.DOScaleX(1, playerSwipeDuration);
+            }
+            animator.SetBool(boolRun, true);
+        }
+        else
+        {
+            animator.SetBool(boolRun, false);
+
         }
 
-        if(myRigidbody2D.velocity.x < 0)
+        if (myRigidbody2D.velocity.x < 0)
         {
             myRigidbody2D.velocity += friction;
         }
@@ -73,8 +96,9 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(jump))
         {
             myRigidbody2D.velocity = Vector2.up * forceJump;
-            ResetAnimation();
-            HandleScaleJump();
+            animator.SetBool(boolJump, true);
+            //ResetAnimation();
+            //HandleScaleJump();
         }
     }
     private void ResetAnimation()
@@ -86,7 +110,8 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == keyToCheck)
         {
-           //HandleScaleFall();           
+            animator.SetBool(boolJump, false);
+            //HandleScaleFall();           
             //ResetAnimation();
         }
     }
