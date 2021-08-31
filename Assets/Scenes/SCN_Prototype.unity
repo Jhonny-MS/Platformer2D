@@ -416,7 +416,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &1266034799
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -496,13 +496,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidbody2D: {fileID: 1266034798}
   friction: {x: 0.1, y: 0}
+  keyToCheck: floor
   forceJump: 20
   speedRun: 15
   speed: 7
-  animationDuration: 0.3
+  animationDuration: 0.2
   jumpScaleY: 1
   jumpScaleX: 0.5
   ease: 27
+  fallScaleY: -1
+  fallScaleX: -0.5
   moveLeft: 276
   moveRight: 275
   jump: 273
@@ -809,7 +812,7 @@ GameObject:
   - component: {fileID: 1672976472}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
