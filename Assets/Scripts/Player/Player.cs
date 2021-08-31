@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == keyToCheck)
         {
-            HandleScaleFall();           
+           //HandleScaleFall();           
             //ResetAnimation();
         }
     }
