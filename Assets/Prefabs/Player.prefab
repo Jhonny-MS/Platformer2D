@@ -99,7 +99,7 @@ MonoBehaviour:
   keyToCheck: floor
   forceJump: 20
   speedRun: 15
-  speed: 7
+  speed: 10
   animationDuration: 0.2
   jumpScaleY: 1
   jumpScaleX: 0.5
