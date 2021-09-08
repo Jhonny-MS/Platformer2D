@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     public Rigidbody2D myRigidbody2D;
     public Vector2 friction = new Vector2(.1f,0);
     public string keyToCheck = "floor";
+    public HealthBase healthBase;
 
     [Header("Jump")]
     public float forceJump = 2;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
     [Header("Animation Player")]
     public string boolRun = "isRun";
     public string boolJump = "isJump";
+    public string triggerDeath = "isDead";
     public Animator animator;
     public float playerSwipeDuration = 0.5f;
 
@@ -37,6 +39,18 @@ public class Player : MonoBehaviour
     public KeyCode jump;
     public KeyCode run;
 
+    private void Awake()
+    {
+        if(healthBase != null)
+        {
+            healthBase.OnKill += OnPlayerKill;
+        }
+    }
+    private void OnPlayerKill()
+    {
+        healthBase.OnKill -= OnPlayerKill;
+        animator.SetTrigger(triggerDeath);
+    }
     private void Update()
     {
         HandleJump();
@@ -125,4 +139,8 @@ public class Player : MonoBehaviour
         myRigidbody2D.transform.DOScaleY(fallScaleY, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
         myRigidbody2D.transform.DOScaleX(fallScaleX, animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(ease);
     }   
+    public void DestroyMe()
+    {
+        Destroy(gameObject);
+    }
 }
