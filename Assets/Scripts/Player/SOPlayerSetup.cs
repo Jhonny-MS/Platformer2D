@@ -27,6 +27,7 @@ public class SOPlayerSetup : ScriptableObject
     public string boolJump = "isJump";
     public string triggerDeath = "isDead";
     public float playerSwipeDuration = 0.5f;
+    public float timeToDeath = 1f;
 
     [Header("Controls")]
     public KeyCode moveLeft;

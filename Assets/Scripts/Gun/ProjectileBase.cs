@@ -12,6 +12,7 @@ public class ProjectileBase : MonoBehaviour
 
     public int damageAmount = 1;
 
+   
 
     private void Awake()
     {
@@ -26,7 +27,9 @@ public class ProjectileBase : MonoBehaviour
     {
         var enemy = collision.transform.GetComponent<EnemyBase>();
 
-        if(enemy != null)
+        //if (audioSource != null) audioSource.Play();
+
+        if (enemy != null)
         {
             enemy.Damage(damageAmount);
             Destroy(gameObject);

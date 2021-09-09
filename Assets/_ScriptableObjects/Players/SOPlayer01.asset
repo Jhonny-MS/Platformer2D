@@ -26,6 +26,7 @@ MonoBehaviour:
   boolJump: isJump
   triggerDeath: isDead
   playerSwipeDuration: 0.5
+  timeToDeath: 3.5
   moveLeft: 276
   moveRight: 275
   jump: 273

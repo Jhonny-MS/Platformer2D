@@ -12,16 +12,19 @@ public class GunBase : MonoBehaviour
 
     private Coroutine _currentCoroutine;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _currentCoroutine = StartCoroutine(StartShoot());
+            _currentCoroutine = StartCoroutine(StartShoot());    
+
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
             if (_currentCoroutine != null) 
-                StopCoroutine(_currentCoroutine);
+                StopCoroutine(_currentCoroutine);       
         }
     }
     IEnumerator StartShoot()
@@ -35,6 +38,7 @@ public class GunBase : MonoBehaviour
     }
     public void Shoot()
     {
+        if (audioSource != null) audioSource.Play();
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.side = playerSideReferences.transform.localScale.x;

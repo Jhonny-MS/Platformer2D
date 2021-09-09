@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     public float spaceToGround = .1f;
     public ParticleSystem jumpVFX;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+
     private void Awake()
     {
         if(healthBase != null)
@@ -40,6 +43,7 @@ public class Player : MonoBehaviour
     {
         healthBase.OnKill -= OnPlayerKill;
         animator.SetTrigger(soPlayerSetup.triggerDeath);
+        if (audioSource != null) audioSource.Play();
     }
     private void Update()
     {
@@ -139,6 +143,6 @@ public class Player : MonoBehaviour
     }   */
     public void DestroyMe()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, soPlayerSetup.timeToDeath);
     }
 }
