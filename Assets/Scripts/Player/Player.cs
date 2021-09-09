@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public SOPlayerSetup soPlayerSetup;
 
     [Header("Jump Collision Check")]
-    public Collider2D collider2D;
+    public Collider2D myCollider2D;
     public float distToGround;
     public float spaceToGround = .1f;
     public ParticleSystem jumpVFX;
@@ -26,9 +26,9 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
-        if(collider2D != null)
+        if(myCollider2D != null)
         {
-            distToGround = collider2D.bounds.extents.y;
+            distToGround = myCollider2D.bounds.extents.y;
         }
     }
     private bool isGrouded()
