@@ -5,7 +5,14 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public string compareTag = "Player";
+    public ParticleSystem myParticleSystem;
+    public GameObject graficItem;
+    public float timeToHide = 3f;
 
+    private void Awake()
+    {
+       // if (myParticleSystem != null) myParticleSystem.transform.SetParent(null);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.transform.CompareTag(compareTag))
@@ -15,13 +22,16 @@ public class Collectable : MonoBehaviour
     }
     protected virtual void Collect()
     {
-        Debug.Log("Collect");
-        gameObject.SetActive(false);
+        if (graficItem != null) graficItem.SetActive(false);
+        Invoke("HideObject", timeToHide);        
         OnCollect();
     }
-
+    private void HideObject()
+    {
+        gameObject.SetActive(false);
+    }
     protected virtual void OnCollect()
     {
-
+        if (myParticleSystem != null) myParticleSystem.Play();       
     }
 }
