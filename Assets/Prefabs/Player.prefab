@@ -1,5 +1,29 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!210 &3284174597081126269
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475224745138713833}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 15
+--- !u!114 &577320444604777915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3475224745138713833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328d711fac07bf84180bf6c3cabb568c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 5379392421733493303}
 --- !u!1 &5379392421733493290
 GameObject:
   m_ObjectHideFlags: 0
@@ -96,27 +120,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody2D: {fileID: 5379392421733493288}
-  friction: {x: 0.5, y: 0}
   keyToCheck: floor
-  healthBase: {fileID: 0}
-  forceJump: 20
-  speedRun: 15
-  speed: 10
-  animationDuration: 0.2
-  jumpScaleY: 1
-  jumpScaleX: 0.5
-  ease: 27
-  fallScaleY: -0.7
-  fallScaleX: -0.5
-  boolRun: isRun
-  boolJump: isJump
-  triggerDeath: isDead
+  healthBase: {fileID: 5379392421733493300}
   animator: {fileID: 1322064819691176723}
-  playerSwipeDuration: 0.5
-  moveLeft: 276
-  moveRight: 275
-  jump: 273
-  run: 304
+  soPlayerSetup: {fileID: 11400000, guid: d7c2e82bd4377c046991390f350f5a28, type: 2}
 --- !u!114 &5379392421733493300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,7 +139,7 @@ MonoBehaviour:
   startLife: 10
   destroyOnKill: 0
   delayToKill: 0.5
-  _flashColor: {fileID: 0}
+  _flashColor: {fileID: 4409515794870623197}
 --- !u!114 &4409515794870623197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +196,10 @@ PrefabInstance:
     - target: {fileID: 1390822902784646840, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
       value: 0.00037652254
+      objectReference: {fileID: 0}
+    - target: {fileID: 2616809535132260505, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3150968784393034490, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -428,6 +439,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+--- !u!1 &3475224745138713833 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8835229685202505509, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
+  m_PrefabInstance: {fileID: 5379392422454803404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2704214522004154739 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8007466312498025151, guid: 00afc9fb4087652419d090da0b825d97, type: 3}
