@@ -14,7 +14,11 @@ public class Player : MonoBehaviour
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
 
-   
+    [Header("Jump Collision Check")]
+    public Collider2D collider2D;
+    public float distToGround;
+    public float spaceToGround = .1f;
+    public ParticleSystem jumpVFX;
 
     private void Awake()
     {
@@ -22,6 +26,15 @@ public class Player : MonoBehaviour
         {
             healthBase.OnKill += OnPlayerKill;
         }
+        if(collider2D != null)
+        {
+            distToGround = collider2D.bounds.extents.y;
+        }
+    }
+    private bool isGrouded()
+    {
+        Debug.DrawRay(transform.position, -Vector2.up, Color.red, distToGround + spaceToGround);
+        return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + spaceToGround);
     }
     private void OnPlayerKill()
     {
@@ -30,6 +43,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        isGrouded();
         HandleJump();
         HandleMoviment();
     }
@@ -84,13 +98,18 @@ public class Player : MonoBehaviour
     }
     private void HandleJump()
     {
-        if (Input.GetKeyDown(soPlayerSetup.jump))
+        if (Input.GetKeyDown(soPlayerSetup.jump) && isGrouded())
         {
             myRigidbody2D.velocity = Vector2.up * soPlayerSetup.forceJump;
             animator.SetBool(soPlayerSetup.boolJump, true);
+            PlayJumpVFX();
             //ResetAnimation();
             //HandleScaleJump();
         }
+    }
+    private void PlayJumpVFX()
+    {
+        if (jumpVFX != null) jumpVFX.Play();
     }
     private void ResetAnimation()
     {
@@ -106,6 +125,8 @@ public class Player : MonoBehaviour
             //ResetAnimation();
         }
     }
+    /* 
+     
     private void HandleScaleJump()
     {
         myRigidbody2D.transform.DOScaleY(soPlayerSetup.jumpScaleY, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
@@ -115,7 +136,7 @@ public class Player : MonoBehaviour
     {
         myRigidbody2D.transform.DOScaleY(soPlayerSetup.fallScaleY, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
         myRigidbody2D.transform.DOScaleX(soPlayerSetup.fallScaleX, soPlayerSetup.animationDuration).SetLoops(2, LoopType.Yoyo).SetEase(soPlayerSetup.ease);
-    }   
+    }   */
     public void DestroyMe()
     {
         Destroy(gameObject);
