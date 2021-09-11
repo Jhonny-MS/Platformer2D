@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public HealthBase healthBase;
     private float _currentSpeed;
     public Animator animator;
+    public bool isPaused = false;
 
     [Header("Setup")]
     public SOPlayerSetup soPlayerSetup;
@@ -65,7 +66,7 @@ public class Player : MonoBehaviour
             animator.speed = 1;
         }
 
-        if (Input.GetKey(soPlayerSetup.moveLeft))
+        if (Input.GetKey(soPlayerSetup.moveLeft) && !isPaused)
         {
             //myRigidbody2D.MovePosition(myRigidbody2D.position - velocity * Time.deltaTime);
             myRigidbody2D.velocity = new Vector2(-_currentSpeed, myRigidbody2D.velocity.y);
@@ -75,7 +76,7 @@ public class Player : MonoBehaviour
             }
             animator.SetBool(soPlayerSetup.boolRun, true);
         }
-        else if (Input.GetKey(soPlayerSetup.moveRight))
+        else if (Input.GetKey(soPlayerSetup.moveRight) && !isPaused)
         {
             //myRigidbody2D.MovePosition(myRigidbody2D.position + velocity * Time.deltaTime);
             myRigidbody2D.velocity = new Vector2(_currentSpeed, myRigidbody2D.velocity.y);
@@ -102,7 +103,7 @@ public class Player : MonoBehaviour
     }
     private void HandleJump()
     {
-        if (Input.GetKeyDown(soPlayerSetup.jump) && isGrouded())
+        if (Input.GetKeyDown(soPlayerSetup.jump) && isGrouded() && !isPaused)
         {
             myRigidbody2D.velocity = Vector2.up * soPlayerSetup.forceJump;
             animator.SetBool(soPlayerSetup.boolJump, true);
@@ -144,5 +145,5 @@ public class Player : MonoBehaviour
     public void DestroyMe()
     {
         Destroy(gameObject, soPlayerSetup.timeToDeath);
-    }
+    }    
 }
