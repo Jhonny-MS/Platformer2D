@@ -6,8 +6,7 @@ using UnityEngine.Audio;
 public class AudioTransitions : MonoBehaviour
 {
     public AudioMixerSnapshot snapshot;
-    public float transtionTime = .1f;
-    public Player player;
+    public float transtionTime = .1f;    
 
     public void MakeTransition()
     {
@@ -15,11 +14,11 @@ public class AudioTransitions : MonoBehaviour
     }
     public void IsPaused()
     {
-        player.isPaused = true;
+        Time.timeScale = 0;
     }
-    public void NotPaused()
+    public void UnPaused()
     {
-        player.isPaused = false;
+        Time.timeScale = 1;
     }
 
 }
