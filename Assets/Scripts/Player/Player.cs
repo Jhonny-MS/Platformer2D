@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public float distToGround;
     public float spaceToGround = .1f;
     public ParticleSystem jumpVFX;
+    
 
     [Header("Sounds")]
     public AudioSource audioSource;

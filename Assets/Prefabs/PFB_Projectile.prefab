@@ -46,9 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 35, y: 0}
-  timeToDestroy: 1
+  timeToReset: 1
   side: 1
   damageAmount: 1
+  gunVXF: {fileID: 0}
 --- !u!58 &7985602911125798939
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -11,12 +11,9 @@ public class ProjectileBase : MonoBehaviour
     public float side = 1;
 
     public int damageAmount = 1;
-
-   
-
     private void Awake()
     {
-        // Destroy(gameObject, timeToDestroy);
+         Destroy(gameObject, timeToReset);
     }
     public void StartProjectile()
     {
@@ -34,12 +31,11 @@ public class ProjectileBase : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         var enemy = collision.transform.GetComponent<EnemyBase>();
-
         //if (audioSource != null) audioSource.Play();
-
+       
         if (enemy != null)
         {
-            enemy.Damage(damageAmount);
+            enemy.Damage(damageAmount);            
             Destroy(gameObject);
         }
     }

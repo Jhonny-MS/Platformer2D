@@ -11,7 +11,9 @@ public class GunBase : MonoBehaviour
     public Transform playerSideReferences;
 
     private Coroutine _currentCoroutine;
-   // public PoolManager poolManager;
+    // public PoolManager poolManager;
+    
+
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -19,8 +21,7 @@ public class GunBase : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _currentCoroutine = StartCoroutine(StartShoot());    
-
+            _currentCoroutine = StartCoroutine(StartShoot());  
         }
         else if (Input.GetKeyUp(KeyCode.Space))
         {
@@ -34,11 +35,12 @@ public class GunBase : MonoBehaviour
         {
             Shoot();
             yield return new WaitForSeconds(timeBetweenShoot);
-          /*var obj = poolManager.GetPooledObject();
-            obj.SetActive(true);
-            obj.GetComponent<ProjectileBase>().StartProjectile();
-            */
-            
+
+            /*var obj = poolManager.GetPooledObject();
+              obj.SetActive(true);
+              obj.GetComponent<ProjectileBase>().StartProjectile();
+              */
+
         }
     }
     public void Shoot()
@@ -47,6 +49,6 @@ public class GunBase : MonoBehaviour
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.side = playerSideReferences.transform.localScale.x;
-        
+
     }
 }
