@@ -106,26 +106,26 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(soPlayerSetup.jump) && isGrouded() && !isPaused)
         {
             myRigidbody2D.velocity = Vector2.up * soPlayerSetup.forceJump;
-            animator.SetBool(soPlayerSetup.boolJump, true);
-            PlayJumpVFX();
+            animator.SetTrigger(soPlayerSetup.triggerJump);
+            PlayJumpVFX();           
             //ResetAnimation();
             //HandleScaleJump();
         }
-    }
+    }   
     private void PlayJumpVFX()
     {
         if (jumpVFX != null) jumpVFX.Play();
     }
-    private void ResetAnimation()
+    /*private void ResetAnimation()
     {
         myRigidbody2D.transform.localScale = Vector2.one;
         DOTween.Kill(myRigidbody2D.transform);
-    }
+    } */
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == keyToCheck)
         {
-            animator.SetBool(soPlayerSetup.boolJump, false);
+            animator.SetBool(soPlayerSetup.triggerJump, false);
             //HandleScaleFall();           
             //ResetAnimation();
         }
