@@ -6,7 +6,7 @@ public class ProjectileBase : MonoBehaviour
 {
     public Vector2 direction;
 
-    public float timeToDestroy = 1f;
+    public float timeToReset = 1f;
 
     public float side = 1;
 
@@ -16,7 +16,15 @@ public class ProjectileBase : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(gameObject, timeToDestroy);
+        // Destroy(gameObject, timeToDestroy);
+    }
+    public void StartProjectile()
+    {
+        Invoke(nameof(FinishUsage), timeToReset);
+    }
+    public void FinishUsage()
+    {
+        gameObject.SetActive(false);
     }
     private void Update()
     {

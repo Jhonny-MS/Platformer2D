@@ -11,6 +11,7 @@ public class GunBase : MonoBehaviour
     public Transform playerSideReferences;
 
     private Coroutine _currentCoroutine;
+   // public PoolManager poolManager;
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -33,6 +34,10 @@ public class GunBase : MonoBehaviour
         {
             Shoot();
             yield return new WaitForSeconds(timeBetweenShoot);
+          /*var obj = poolManager.GetPooledObject();
+            obj.SetActive(true);
+            obj.GetComponent<ProjectileBase>().StartProjectile();
+            */
             
         }
     }
@@ -42,5 +47,6 @@ public class GunBase : MonoBehaviour
         var projectile = Instantiate(prefabProjectile);
         projectile.transform.position = positionToShoot.position;
         projectile.side = playerSideReferences.transform.localScale.x;
+        
     }
 }
