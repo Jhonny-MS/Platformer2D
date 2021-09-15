@@ -15,7 +15,7 @@ MonoBehaviour:
   speedRun: 15
   speed: 10
   friction: {x: 0.5, y: 0}
-  forceJump: 25
+  forceJump: 30
   animationDuration: 0.3
   jumpScaleY: 1
   jumpScaleX: 0.5
@@ -23,7 +23,7 @@ MonoBehaviour:
   fallScaleY: -0.7
   fallScaleX: -0.5
   boolRun: isRun
-  boolJump: isJump
+  triggerJump: isJump
   triggerDeath: isDead
   playerSwipeDuration: 0.5
   timeToDeath: 3.5
