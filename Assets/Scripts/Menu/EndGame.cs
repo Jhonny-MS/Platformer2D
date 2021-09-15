@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class EndGame : MonoBehaviour
 {
     public GameObject uiEndGame;
+    public GameObject hudCoins;
     public string tagToCheck = "Player";
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,5 +20,7 @@ public class EndGame : MonoBehaviour
     public void CallEndGame()
     {
         uiEndGame.SetActive(true);
+        hudCoins.SetActive(false);
+        Time.timeScale = 0;
     }
 }

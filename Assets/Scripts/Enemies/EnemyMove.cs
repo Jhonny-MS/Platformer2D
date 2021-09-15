@@ -7,7 +7,7 @@ public class EnemyMove : MonoBehaviour
 {
     public Vector2 enemyDirection;
     public bool isRight = false;
-    public float timeForTurn = 0f;
+    private float timeForTurn;
     public Rigidbody2D myRigidbody2D;
     public float enemySwipeDuration = .2f;
 
